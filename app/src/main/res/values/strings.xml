@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">N1app</string>
+
+    <string name="lorem_ipsum">
+        デバイスを検索中...
+    </string>
+</resources>
