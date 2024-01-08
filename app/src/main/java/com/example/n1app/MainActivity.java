@@ -6,9 +6,14 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -28,10 +33,20 @@ public class MainActivity extends AppCompatActivity {
         final TextView doorStatus = findViewById(R.id.door_status);
         final TextView edge1_ip = findViewById(R.id.edge1_ip);
         final View edge1 = findViewById(R.id.edge1_constraint);
+        final ImageView gifImageView = findViewById(R.id.search_gif);
 
         //エレメント非表示
         edge1.setVisibility(View.GONE);
         addEdgeButton.setVisibility(View.GONE);
+
+        //git再生
+        int gifUrl = R.drawable.search;
+
+        // Glideを使用してGIF画像をロード
+        Glide.with(this)
+                .asGif()
+                .load(gifUrl)
+                .into(gifImageView);
 
         //端末が見つかり次第デバイス一覧画面を表示するスレッド
         runOnUiThread(new Runnable() {
@@ -48,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
                       edge1_ip.setText("ip: " + ip);
                       //「検索中」の文言を非表示
                       search_text.setVisibility(View.GONE);
+                      gifImageView.setVisibility(View.GONE);
 
                       // バックグラウンドスレッドでWifi接続を監視
                       Status.previousWifiStatus = false;
@@ -80,26 +96,8 @@ public class MainActivity extends AppCompatActivity {
                           }
                       });
                   }else{
-                      //端末が見つからなかったら再検索
-                      searchTextUpdate();
-
                       Handler handler = new Handler();
                       handler.postDelayed(this, 200);
-                  }
-              }
-              private void searchTextUpdate(){
-                  //ドットを数える
-                  int dotCount = 0;
-                  for (int i = 0; i < search_text.getText().length(); i++) {
-                      if (search_text.getText().charAt(i) == '.') {
-                          dotCount++;
-                      }
-                  }
-                  //テキスト更新
-                  if(dotCount == 5){
-                      search_text.setText("デバイスを検索中");
-                  }else{
-                      search_text.setText(search_text.getText() + ".");
                   }
               }
         });

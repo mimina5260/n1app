@@ -23,6 +23,15 @@
             app:layout_constraintEnd_toEndOf="@id/edge_list"
             />
 
+        <ImageView
+            android:id="@+id/search_gif"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@+id/edge_list"
+            app:layout_constraintEnd_toEndOf="@+id/edge_list"
+            android:src="@drawable/search"
+            />
+
         <ImageButton
             android:id="@+id/addEdgeButton"
             android:layout_width="wrap_content"
@@ -65,7 +74,6 @@
                     android:layout_margin="10dp"
                     app:layout_constraintBottom_toBottomOf="@+id/edge1"
                     app:layout_constraintStart_toStartOf="@+id/edge1"
-                    app:layout_constraintTop_toTopOf="@+id/edge1"
                     app:srcCompat="@drawable/door_icon"
                     tools:ignore="MissingConstraints" />
 
