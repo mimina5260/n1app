@@ -3,4 +3,5 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="edge_text">#FFFFFFFF</color>
+    <color name="edge_bg">#21b2aa</color>
 </resources>
