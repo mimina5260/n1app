@@ -70,6 +70,9 @@ public class MainActivity extends AppCompatActivity {
                       search_text.setVisibility(View.GONE);
                       gifImageView.setVisibility(View.GONE);
 
+                      //現在のドアステータス取得
+                      Status.door_status = 0;
+
                       // Wifi接続を監視するメソッド呼び出し
                       //Status.previousWifiStatus = ここにメソッド;
                       runOnUiThread(new Runnable() {
@@ -120,11 +123,13 @@ public class MainActivity extends AppCompatActivity {
 
         //開錠/施錠ボタン押下イベント
         doorButton.setOnClickListener(v -> {
-            if (doorButton.getText() == "開錠する") {
+            if (Status.door_status == 0) {
                 doorButton.setText("開錠中...");
 
                 Runnable myRunnable = () -> {
                     doorButton.setText("施錠する");
+                    Status.door_status = 1;
+
                     // ダイアログを表示
                     AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
                     builder.setMessage("開錠しました");

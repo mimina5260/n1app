@@ -117,7 +117,7 @@
                     android:id="@+id/switchText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="ドアの自動開錠機能"
+                    android:text="ドアの自動施錠機能"
                     android:textColor="@color/edge_text"
                     app:layout_constraintBottom_toTopOf="@id/edge1_switch"
                     app:layout_constraintEnd_toEndOf="@id/edge1_switch"
